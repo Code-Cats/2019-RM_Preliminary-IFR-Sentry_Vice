@@ -4,13 +4,13 @@ MainBoardSendTypeDef SendData=MAINBOARD_SENDDATA_DEFAULT;
 //副板给主板串口发送函数	//2ms执行一次，10ms更新一次结果，14400的波特率，一个字节最多传输11位，11/14400=0.76ms
 void MainBoard_SendData(void)
 {
-	if(USART_GetFlagStatus(USART1,USART_FLAG_TC)== SET)	//如果上一帧发送完成
+	if(USART_GetFlagStatus(USART2,USART_FLAG_TC)== SET)	//如果上一帧发送完成
 	{
 		if(SendData.statu==1)
 		{
 			SendData.data[0]=0x5A;	//防止帧头帧尾被破坏
 			SendData.data[4]=0xA5;	//防止帧头帧尾被破坏
-			USART_SendData(USART1,SendData.data[SendData.count]);
+			USART_SendData(USART2,SendData.data[SendData.count]);
 			SendData.count++;
 			if(SendData.count>4)
 			{
