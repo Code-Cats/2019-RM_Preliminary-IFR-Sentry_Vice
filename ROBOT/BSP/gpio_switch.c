@@ -94,11 +94,16 @@ void T1_7_IN_Init(void)	//T1-T7输入
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);
 	GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable,ENABLE);//调用GPIO重映射函数
 
-	GPIO_InitStructure.GPIO_Pin =  GPIO_Pin_6 | GPIO_Pin_7 | GPIO_Pin_8 | GPIO_Pin_9 | GPIO_Pin_10 | GPIO_Pin_11 | GPIO_Pin_12;			   
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; 	
+	GPIO_InitStructure.GPIO_Pin =  GPIO_Pin_6 | GPIO_Pin_7 | GPIO_Pin_8 | GPIO_Pin_10 | GPIO_Pin_11 | GPIO_Pin_12;			   
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD; 	
 	//  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;	 //IO口速度为50MHz
 	GPIO_Init(GPIOC, &GPIO_InitStructure);			    
 	// GPIO_ResetBits(GPIOC,GPIO_Pin_14 | GPIO_Pin_15);		
+	
+	GPIO_InitStructure.GPIO_Pin =  GPIO_Pin_9;			   
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; 	
+	//  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;	 //IO口速度为50MHz
+	GPIO_Init(GPIOC, &GPIO_InitStructure);	
 }
 
 void P5_8_IN_Init(void)	//PWM_1-4输入

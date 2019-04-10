@@ -25,7 +25,7 @@ void Control_Task(void)
 	
 	test_t2=T2_IN;
 	test_t4=T4_IN;
-	
+
 	if(test_t4==0)
 	{
 		Encoder_Postion=0+40;
